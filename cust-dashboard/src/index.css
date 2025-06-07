@@ -1,0 +1,183 @@
+html, body, #root {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(240)'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%237C73E6'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.15'%3E%3Cpolygon fill='%23FFFFFF' points='90 150 0 300 180 300'/%3E%3Cpolygon fill='%237C73E6' points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23FFFFFF' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%237C73E6' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23FFFFFF' points='450 150 540 0 360 0'/%3E%3Cpolygon fill='%237C73E6' points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23FFFFFF' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%237C73E6' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFFFFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%237C73E6' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23FFFFFF' points='990 150 1080 0 900 0'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  box-sizing: border-box;
+}
+
+.archivo-black-regular {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.header-container {
+  max-width: 800px;
+}
+
+.project-description {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+  color: #363b4e;
+  font-family: "Archivo Black", sans-serif;
+}
+
+#title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #363b4e;
+}
+
+.custom-card {
+  border-radius: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  height: 100%;
+  max-width: 100%;
+}
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  max-height: none;
+}
+
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.feature-imp-container {
+  padding-top: 4.3rem;
+}
+
+.animated-result {
+  animation: bounceFadeIn 0.8s ease;
+  transform-origin: center;
+  font-family: "Archivo Black", sans-serif;
+}
+
+@keyframes bounceFadeIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* button */
+
+.predict-btn {
+  background-color: #8884d8;
+  border: 2px solid #484847;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+  margin: 1rem auto 0 auto;
+}
+
+
+.predict-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(95, 91, 91, 0.2);
+}
+
+@media (max-width: 768px) {
+  .custom-card {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  #title {
+    font-size: 2.25rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+  }
+
+  .header-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .table-responsive {
+    max-height: 300px;
+    width: 100%;
+  }
+
+  .scroll-area {
+    max-height: none;
+    padding: 0.5rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+}
+
+
+@media(max-width: 637px) {
+  .form-control, .form-select {
+    width: 300px !important;
+    margin: 0 auto !important; /* ✅ centers the inputs */
+    display: block;             /* ensures margin works as expected */
+  }
+  .form-container{
+    justify-content: center;
+  }
+}
+
+.feature-chart-responsive {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .feature-chart-responsive {
+    max-width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .feature-imp-container p {
+    font-size: 0.9rem;
+  }
+}
