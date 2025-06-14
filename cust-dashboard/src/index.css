@@ -73,6 +73,26 @@ html, body, #root {
   width: 100%;
 }
 
+.cards-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.left-card,
+.right-card {
+  flex: 1 1 0;
+}
+
+.left-card {
+  min-width: 350px;
+}
+
+.feature-chart-inner {
+  min-width: 300px;
+  height: 250px;
+  width: 100%;
+}
+
 .feature-imp-container {
   padding-top: 4.3rem;
 }
@@ -158,6 +178,19 @@ html, body, #root {
     box-sizing: border-box;
   }
 
+  .left-card,
+  .right-card {
+    min-width: 100%;
+  }
+
+  .table-responsive table {
+    min-width: 500px;
+  }
+
+  .feature-chart-inner {
+    min-width: 250px;
+  }
+
   .feature-imp-container {
     padding: 1rem;
     box-sizing: border-box;
@@ -184,6 +217,7 @@ html, body, #root {
 .feature-chart-responsive {
   width: 100%;
   max-width: 100%;
+  overflow-x: auto;
 }
 
 @media (max-width: 768px) {
