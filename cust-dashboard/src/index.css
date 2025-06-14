@@ -68,9 +68,9 @@ html, body, #root {
 }
 
 .table-responsive {
-  max-height: 400px;
+  overflow-x: auto;
   overflow-y: auto;
-  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .feature-imp-container {
@@ -151,6 +151,22 @@ html, body, #root {
     font-size: 0.85rem;
     padding: 1rem;
   }
+
+  .feature-chart-responsive {
+    max-width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .feature-imp-container {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .feature-imp-container p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 
@@ -180,4 +196,40 @@ html, body, #root {
   .feature-imp-container p {
     font-size: 0.9rem;
   }
+}
+
+@media (max-width: 481px) {
+  .model-performance-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .model-performance-container p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+  }
+
+  .pie-chart {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    align-self: flex-start;
+  }
+}
+
+.recharts-legend-wrapper {
+  width: 100% !important;
+  left: 0 !important;
+  text-align: center !important;
+  padding: 0 10px;
+  box-sizing: border-box;
 }

@@ -7,6 +7,49 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
+const CustomLegend = ({ payload }) => {
+  return (
+    <ul style={{
+      listStyle: 'none',
+      padding: 0,
+      margin: 0,
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gap: '0.25rem 0.75rem',
+    }}>
+      {payload.map((entry, index) => (
+        <li key={`item-${index}`} style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 32 32"
+            style={{
+              marginRight: '4px',
+              display: 'inline-block',
+              verticalAlign: 'middle',
+            }}
+          >
+            <circle cx="16" cy="16" r="16" fill={entry.color} />
+          </svg>
+          <span
+            style={{
+              color: entry.color,
+              fontSize: '0.875rem',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {entry.value}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 function App() {
   const [formData, setFormData] = useState({
     age: '',
@@ -16,11 +59,9 @@ function App() {
   });
 
   const [prediction, setPrediction] = useState(null);
-// Animation use state
   const [animationKey, setAnimationKey] = useState(0);
   const [performanceData, setPerformanceData] = useState([]);
   const [featureImportance, setFeatureImportance] = useState([]);
-  // use state for loyalty custom error ('not 0 or 1')
   const [loyaltyError, setLoyaltyError] = useState('');
 
   const handleChange = (e) => {
@@ -29,29 +70,29 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const age = Number(formData.age);
     const purchases = Number(formData.purchases);
     const loyalty = Number(formData.loyalty);
     const discounts = Number(formData.discounts);
-  
+
     if (loyalty !== 0 && loyalty !== 1) {
       setLoyaltyError('Loyalty must be 0 or 1.');
       return;
     } else {
       setLoyaltyError('');
     }
-  
+
     const lp_discounts = loyalty * discounts;
     const features = [age, purchases, loyalty, discounts, lp_discounts];
-  
+
     try {
       const res = await fetch('https://purchasepulseai.onrender.com/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ features })
       });
-  
+
       const data = await res.json();
       setPrediction(data.prediction);
       setAnimationKey(prev => prev + 1);
@@ -99,14 +140,14 @@ function App() {
           {/* Left Card */}
           <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark" style={{ flex: '1 1 0', minWidth: '350px' }}>
             <form onSubmit={handleSubmit} className="form-container archivo-black-regular">
-              <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter custom data points</h4>
+              <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Data</h4>
               <div className="mb-3">
                 <label className="form-label">Age</label>
                 <input type="number" className="form-control" name="age" value={formData.age}
                   onChange={handleChange} placeholder="Enter age" required />
               </div>
               <div className="mb-3">
-                <label className="form-label">Number of Purchases</label>
+                <label className="form-label">Total Number of Purchases</label>
                 <input type="number" className="form-control" name="purchases" value={formData.purchases}
                   onChange={handleChange} placeholder="Enter total purchases" required />
               </div>
@@ -128,9 +169,9 @@ function App() {
               )}
             </div>
               <div className="mb-3">
-                <label className="form-label">Discounts Used</label>
+                <label className="form-label">Total Number of Discounts Used</label>
                 <input type="number" className="form-control" name="discounts" value={formData.discounts}
-                  onChange={handleChange} placeholder="How many discounts used" required />
+                  onChange={handleChange} placeholder="Enter how many discounts used" required />
               </div>
               {
               <button
@@ -139,13 +180,7 @@ function App() {
                   >
                     Predict
               </button>
-              /* <button
-                type="submit"
-                className="w-100 text-white fw-bold py-2 px-3 rounded"
-                style={{ backgroundColor: "#8884d8", border: 'none' }}
-              >
-                Predict
-              </button> */}
+              }
             </form>
 
             {prediction !== null && (
@@ -156,14 +191,13 @@ function App() {
                 }`}
               >
                 {prediction === 1
-                  ? '✅ The customer purchases!'
-                  : '❌ The customer does not purchase.'}
+                  ? '✅ The customer will purchase!'
+                  : '❌ The customer will not purchase.'}
               </div>
             )}
 
-            
             <div className="mt-4">
-              <h6 className="fw-bold text-center mb-3 archivo-black-regular">📊 Model Performance</h6>
+              <h6 className="fw-bold text-center mb-3 archivo-black-regular">📊 Model Performance (1500 samples)</h6>
               <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
                   <Pie
@@ -179,7 +213,7 @@ function App() {
                     <Cell fill="#FFB3B3" />
                     <Cell fill="#FF8A8A" />
                   </Pie>
-                  <Legend />
+                  <Legend content={<CustomLegend />} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -187,34 +221,37 @@ function App() {
           </div>
 
           {/* Right Card */}
-          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark" style={{ flex: '1 1 0', minWidth: '400px' }}>
+          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark" style={{ flex: '1 1 0', minWidth: '0' }}>
             <div className="scroll-area flex-grow-1">
               <h6 className="fw-bold mb-3 text-center archivo-black-regular" >🔍 Sneak Peek: Dataset Sample</h6>
-              <div
-                className="table-responsive"
-                style={{
-                  maxHeight: '300px',
-                  overflowY: 'auto',
-                  overflowX: 'auto',
-                  width: '100%',
-                }}
-              >
-                <table className="table table-sm table-bordered text-center w-100">
-                  <thead className="table-light">
-                    <tr>
-                      <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
-                      <th>Time</th><th>Loyalty</th><th>Discounts</th><th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>40</td><td>1</td><td>66120</td><td>8</td><td>0</td><td>30.6</td><td>0</td><td>5</td><td>1</td></tr>
-                    <tr><td>20</td><td>1</td><td>23580</td><td>4</td><td>2</td><td>38.2</td><td>0</td><td>5</td><td>0</td></tr>
-                    <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
-                    <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
-                    <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
-                  </tbody>
-                </table>
-              </div>
+                <div
+                  style={{
+                    width: '100%',
+                    overflowX: 'auto',
+                    WebkitOverflowScrolling: 'touch',
+                  }}
+                >
+                  <div style={{ minWidth: '700px' }}>
+                    <table className="table table-sm table-bordered text-center mb-0">
+                      <thead className="table-light">
+                        <tr>
+                          <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
+                          <th>Time</th><th>Loyalty</th><th>Discounts</th><th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>40</td><td>1</td><td>66120</td><td>8</td><td>0</td><td>30.6</td><td>0</td><td>5</td><td>1</td></tr>
+                        <tr><td>20</td><td>1</td><td>23580</td><td>4</td><td>2</td><td>38.2</td><td>0</td><td>5</td><td>0</td></tr>
+                        <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
+                        <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
+                        <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+
+
 
               <div className="mt-5 feature-imp-container">
                 <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
@@ -268,9 +305,7 @@ function App() {
           </p>
           <p className="mb-0">
             Dataset by{" "}
-            <p
-              
-            >
+            <p>
               Rabie El Kharoua
             </p>
           </p>
