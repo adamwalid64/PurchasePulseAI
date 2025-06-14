@@ -127,7 +127,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
+    <div className="app-container container-fluid">
       <div className="header-container text-center mb-3">
         <h1 id="title" className="archivo-black-regular">PurchasePulse</h1>
         <p className="text-muted project-description">
@@ -135,10 +135,9 @@ function App() {
         </p>
       </div>
 
-      <div className="d-flex justify-content-center">
-      <div className="cards-wrapper d-flex flex-column flex-md-row flex-wrap gap-4 align-items-stretch">
-          {/* Left Card */}
-          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark left-card">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6">
+          <div className="custom-card shadow-sm p-4 border border-dark">
             <form onSubmit={handleSubmit} className="form-container archivo-black-regular">
               <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Data</h4>
               <div className="mb-3">
@@ -219,59 +218,59 @@ function App() {
             </div>
 
           </div>
+        </div>
+      </div>
 
-          {/* Right Card */}
-          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark right-card">
-            <div className="right-content scroll-area flex-grow-1">
-              <section className="dataset-section mb-4">
-                <h6 className="fw-bold mb-3 text-center archivo-black-regular" >🔍 Sneak Peek: Dataset Sample</h6>
-                <div className="table-responsive">
-                  <table className="table table-sm table-bordered text-center mb-0">
-                      <thead className="table-light">
-                        <tr>
-                          <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
-                          <th>Time</th><th>Loyalty</th><th>Discounts</th><th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>40</td><td>1</td><td>66120</td><td>8</td><td>0</td><td>30.6</td><td>0</td><td>5</td><td>1</td></tr>
-                        <tr><td>20</td><td>1</td><td>23580</td><td>4</td><td>2</td><td>38.2</td><td>0</td><td>5</td><td>0</td></tr>
-                        <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
-                        <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
-                        <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
-                      </tbody>
-                  </table>
-                </div>
-              </section>
-
-
-
-
-              <section className="mt-5 feature-imp-container">
-                <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
-                <p className='archivo-black-regular'>
-                  Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
-                </p>
-                  <div className="feature-chart-responsive">
-                    <div className="feature-chart-inner">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                          data={featureImportance}
-                          layout="vertical"
-                          margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis type="number" />
-                          <YAxis type="category" dataKey="name" />
-                          <Tooltip />
-                          <Bar dataKey="value" fill="#8884d8" />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-              </section>
+      <div className="row justify-content-center mt-4">
+        <div className="col-12">
+          <section className="dataset-section custom-card mb-4">
+            <h6 className="fw-bold mb-3 text-center archivo-black-regular">🔍 Sneak Peek: Dataset Sample</h6>
+            <div className="table-responsive">
+              <table className="table table-sm table-bordered text-center mb-0">
+                <thead className="table-light">
+                  <tr>
+                    <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
+                    <th>Time</th><th>Loyalty</th><th>Discounts</th><th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>40</td><td>1</td><td>66120</td><td>8</td><td>0</td><td>30.6</td><td>0</td><td>5</td><td>1</td></tr>
+                  <tr><td>20</td><td>1</td><td>23580</td><td>4</td><td>2</td><td>38.2</td><td>0</td><td>5</td><td>0</td></tr>
+                  <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
+                  <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
+                </tbody>
+              </table>
             </div>
-          </div>
+          </section>
+        </div>
+      </div>
+
+      <div className="row justify-content-center mb-4">
+        <div className="col-12">
+          <section className="feature-imp-container custom-card">
+            <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
+            <p className="archivo-black-regular">
+              Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
+            </p>
+            <div className="feature-chart-responsive">
+              <div className="feature-chart-inner">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={featureImportance}
+                    layout="vertical"
+                    margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis type="number" />
+                    <YAxis type="category" dataKey="name" />
+                    <Tooltip />
+                    <Bar dataKey="value" fill="#8884d8" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
