@@ -10,8 +10,9 @@
 - 📊 **Prediction Dashboard** with user-friendly form input  
 - 📈 **Model Performance** visualized with a pie chart (TP, TN, FP, FN)  
 - 🧮 **Feature Importance** bar chart based on model coefficients  
-- 📋 **Dataset Preview** for quick reference to the training data  
-- 🎨 Clean UI built with React, Bootstrap, and Recharts  
+- 📋 **Dataset Preview** for quick reference to the training data
+- 🎨 Clean UI built with React, Bootstrap, and Recharts
+- 📱 **Responsive layout** optimized for mobile screens
 
 ---
 

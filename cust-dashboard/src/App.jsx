@@ -136,9 +136,9 @@ function App() {
       </div>
 
       <div className="d-flex justify-content-center">
-      <div className="d-flex flex-column flex-md-row flex-wrap gap-4 align-items-stretch" style={{ width: '100%', maxWidth: '1200px' }}>
+      <div className="cards-wrapper d-flex flex-column flex-md-row flex-wrap gap-4 align-items-stretch">
           {/* Left Card */}
-          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark" style={{ flex: '1 1 0', minWidth: '350px' }}>
+          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark left-card">
             <form onSubmit={handleSubmit} className="form-container archivo-black-regular">
               <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Data</h4>
               <div className="mb-3">
@@ -221,18 +221,11 @@ function App() {
           </div>
 
           {/* Right Card */}
-          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark" style={{ flex: '1 1 0', minWidth: '0' }}>
+          <div className="card custom-card shadow-sm p-4 d-flex flex-column border border-dark right-card">
             <div className="scroll-area flex-grow-1">
               <h6 className="fw-bold mb-3 text-center archivo-black-regular" >🔍 Sneak Peek: Dataset Sample</h6>
-                <div
-                  style={{
-                    width: '100%',
-                    overflowX: 'auto',
-                    WebkitOverflowScrolling: 'touch',
-                  }}
-                >
-                  <div style={{ minWidth: '700px' }}>
-                    <table className="table table-sm table-bordered text-center mb-0">
+              <div className="table-responsive">
+                <table className="table table-sm table-bordered text-center mb-0">
                       <thead className="table-light">
                         <tr>
                           <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
@@ -248,7 +241,6 @@ function App() {
                       </tbody>
                     </table>
                   </div>
-                </div>
 
 
 
@@ -258,8 +250,8 @@ function App() {
                 <p className='archivo-black-regular'>
                   Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
                 </p>
-                  <div className="feature-chart-responsive" style={{ overflowX: 'auto' }}>
-                    <div style={{ minWidth: '300px', height: '250px' }}>
+                  <div className="feature-chart-responsive">
+                    <div className="feature-chart-inner">
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
                           data={featureImportance}
