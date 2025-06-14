@@ -90,7 +90,21 @@ html, body, #root {
 .feature-chart-inner {
   width: 100%;
   height: 250px;
-  min-width: 0;
+  min-width: 300px;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dataset-section {
+  overflow-x: auto;
+}
+
+.dataset-section table {
+  min-width: 700px;
 }
 
 .feature-imp-container {
@@ -178,6 +192,14 @@ html, body, #root {
     box-sizing: border-box;
   }
 
+  .dataset-section table {
+    min-width: 600px;
+  }
+
+  .feature-chart-inner {
+    min-width: 250px;
+  }
+
   .left-card,
   .right-card {
     min-width: 100%;
@@ -230,6 +252,14 @@ html, body, #root {
   .feature-imp-container p {
     font-size: 0.9rem;
   }
+
+  .dataset-section table {
+    min-width: 600px;
+  }
+
+  .feature-chart-inner {
+    min-width: 250px;
+  }
 }
 
 @media (max-width: 481px) {
@@ -257,6 +287,15 @@ html, body, #root {
     max-width: 100%;
     height: auto;
     align-self: flex-start;
+  }
+
+  .dataset-section table {
+    min-width: 500px;
+  }
+
+  .feature-chart-inner {
+    min-width: 220px;
+    height: 200px;
   }
 }
 
