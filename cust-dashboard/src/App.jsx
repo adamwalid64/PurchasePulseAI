@@ -221,9 +221,9 @@ function App() {
         </div>
       </div>
 
-      <div className="row justify-content-center mt-4">
-        <div className="col-12">
-          <section className="dataset-section custom-card mb-4">
+      <div className="row dashboard-row mt-4">
+        <div className="col-12 col-lg-6 mb-4">
+          <section className="dataset-section custom-card h-100">
             <h6 className="fw-bold mb-3 text-center archivo-black-regular">🔍 Sneak Peek: Dataset Sample</h6>
             <div className="table-responsive">
               <table className="table table-sm table-bordered text-center mb-0">
@@ -244,11 +244,8 @@ function App() {
             </div>
           </section>
         </div>
-      </div>
-
-      <div className="row justify-content-center mb-4">
-        <div className="col-12">
-          <section className="feature-imp-container custom-card">
+        <div className="col-12 col-lg-6 mb-4">
+          <section className="feature-imp-container custom-card h-100">
             <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
             <p className="archivo-black-regular">
               Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
