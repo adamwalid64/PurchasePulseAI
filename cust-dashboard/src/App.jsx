@@ -62,6 +62,13 @@ function App() {
   const [animationKey, setAnimationKey] = useState(0);
   const [performanceData, setPerformanceData] = useState([]);
   const [featureImportance, setFeatureImportance] = useState([]);
+  const defaultFeatureImportance = [
+    { name: 'purchases', value: 1.2 },
+    { name: 'loyalty', value: 0.8 },
+    { name: 'discounts x loyalty', value: 0.5 },
+    { name: 'age', value: 0.45 },
+    { name: 'discounts', value: 0.3 }
+  ];
   const [loyaltyError, setLoyaltyError] = useState('');
 
   const handleChange = (e) => {
@@ -119,10 +126,14 @@ function App() {
       });
 
     fetch('https://purchasepulseai.onrender.com/importance')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
       .then(data => setFeatureImportance(data))
       .catch(err => {
         console.error('Failed to fetch feature importance:', err);
+        setFeatureImportance(defaultFeatureImportance);
       });
   }, []);
 
@@ -135,9 +146,9 @@ function App() {
         </p>
       </div>
 
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
-          <div className="custom-card shadow-sm p-4 border border-dark">
+      <div className="row dashboard-row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6 mb-4">
+          <div className="custom-card shadow-sm p-4 border border-dark h-100">
             <form onSubmit={handleSubmit} className="form-container archivo-black-regular">
               <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Data</h4>
               <div className="mb-3">
@@ -221,50 +232,49 @@ function App() {
         </div>
       </div>
 
-      <div className="row dashboard-row mt-4">
-        <div className="col-12 col-lg-6 mb-4">
-          <section className="dataset-section custom-card h-100">
-            <h6 className="fw-bold mb-3 text-center archivo-black-regular">🔍 Sneak Peek: Dataset Sample</h6>
-            <div className="table-responsive">
-              <table className="table table-sm table-bordered text-center mb-0">
-                <thead className="table-light">
-                  <tr>
-                    <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
-                    <th>Time</th><th>Loyalty</th><th>Discounts</th><th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>40</td><td>1</td><td>66120</td><td>8</td><td>0</td><td>30.6</td><td>0</td><td>5</td><td>1</td></tr>
-                  <tr><td>20</td><td>1</td><td>23580</td><td>4</td><td>2</td><td>38.2</td><td>0</td><td>5</td><td>0</td></tr>
-                  <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
-                  <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
-                  <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
-                </tbody>
-              </table>
+        <div className="col-12 col-md-8 col-lg-6 mb-4">
+          <section className="custom-card h-100">
+            <div className="dataset-section mb-4">
+              <h6 className="fw-bold mb-3 text-center archivo-black-regular">🔍 Sneak Peek: Dataset Sample</h6>
+              <div className="table-responsive">
+                <table className="table table-sm table-bordered text-center mb-0">
+                  <thead className="table-light">
+                    <tr>
+                      <th>Age</th><th>Gender</th><th>Income</th><th>Purchases</th><th>Category</th>
+                      <th>Time</th><th>Loyalty</th><th>Discounts</th><th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>40</td><td>1</td><td>66120</td><td>8</td><td>0</td><td>30.6</td><td>0</td><td>5</td><td>1</td></tr>
+                    <tr><td>20</td><td>1</td><td>23580</td><td>4</td><td>2</td><td>38.2</td><td>0</td><td>5</td><td>0</td></tr>
+                    <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
+                    <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
+                    <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </section>
-        </div>
-        <div className="col-12 col-lg-6 mb-4">
-          <section className="feature-imp-container custom-card h-100">
-            <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
-            <p className="archivo-black-regular">
-              Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
-            </p>
-            <div className="feature-chart-responsive">
-              <div className="feature-chart-inner">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={featureImportance}
-                    layout="vertical"
-                    margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" />
-                    <YAxis type="category" dataKey="name" />
-                    <Tooltip />
-                    <Bar dataKey="value" fill="#8884d8" />
-                  </BarChart>
-                </ResponsiveContainer>
+            <div className="feature-imp-container">
+              <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
+              <p className="archivo-black-regular">
+                Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
+              </p>
+              <div className="feature-chart-responsive">
+                <div className="feature-chart-inner">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={featureImportance}
+                      layout="vertical"
+                      margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis type="number" />
+                      <YAxis type="category" dataKey="name" />
+                      <Tooltip />
+                      <Bar dataKey="value" fill="#8884d8" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
             </div>
           </section>
