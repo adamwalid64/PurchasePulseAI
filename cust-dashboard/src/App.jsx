@@ -230,7 +230,6 @@ function App() {
 
           </div>
         </div>
-      </div>
 
         <div className="col-12 col-md-8 col-lg-6 mb-4">
           <section className="custom-card h-100">
@@ -279,6 +278,8 @@ function App() {
             </div>
           </section>
         </div>
+
+      </div>
 
       <footer className="bg-light text-center text-muted border-top mt-5 py-3 w-100 archivo-black-regular border border-dark">
         <div>
