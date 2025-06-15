@@ -279,7 +279,6 @@ function App() {
             </div>
           </section>
         </div>
-      </div>
 
       <footer className="bg-light text-center text-muted border-top mt-5 py-3 w-100 archivo-black-regular border border-dark">
         <div>
@@ -304,10 +303,7 @@ function App() {
             </a>
           </p>
           <p className="mb-0">
-            Dataset by{" "}
-            <p>
-              Rabie El Kharoua
-            </p>
+            Dataset by <span>Rabie El Kharoua</span>
           </p>
         </div>
       </footer>
