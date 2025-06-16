@@ -257,6 +257,11 @@ function App() {
                     <tr><td>27</td><td>1</td><td>127821</td><td>11</td><td>2</td><td>31.6</td><td>1</td><td>0</td><td>1</td></tr>
                     <tr><td>24</td><td>1</td><td>137799</td><td>19</td><td>3</td><td>46.2</td><td>0</td><td>4</td><td>1</td></tr>
                     <tr><td>31</td><td>1</td><td>99301</td><td>19</td><td>1</td><td>19.8</td><td>0</td><td>0</td><td>1</td></tr>
+                    <tr><td>66</td><td>1</td><td>37758</td><td>14</td><td>4</td><td>17.8</td><td>0</td><td>2</td><td>0</td></tr>
+                    <tr><td>39</td><td>1</td><td>126883</td><td>16</td><td>3</td><td>42.1</td><td>1</td><td>4</td><td>1</td></tr>
+                    <tr><td>64</td><td>1</td><td>39707</td><td>13</td><td>2</td><td>17.2</td><td>1</td><td>0</td><td>0</td></tr>
+                    <tr><td>43</td><td>0</td><td>102797</td><td>20</td><td>1</td><td>6.0</td><td>0</td><td>3</td><td>0</td></tr>
+                    <tr><td>20</td><td>1</td><td>63855</td><td>16</td><td>0</td><td>38.6</td><td>0</td><td>5</td><td>1</td></tr>
                   </tbody>
                 </table>
               </div>
