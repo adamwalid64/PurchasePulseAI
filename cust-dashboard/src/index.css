@@ -141,3 +141,7 @@ html, body, #root {
     min-width: 250px;
   }
 }
+
+div.feature-imp-container {
+  margin-top: 11.5rem;
+}

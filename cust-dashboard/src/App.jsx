@@ -154,7 +154,11 @@ function App() {
               <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Information</h4>
               <div className="form-text mb-3 text-center">
                 Data should be from one major retailer to ensure accuracy.
+                Disclaimer: Predictions are estimates based on data and may not always be accurate.
               </div>
+              {/* <div className="form-text mb-3 text-center">
+                Disclaimer: Predictions are estimates based on data and may not always be accurate.
+              </div> */}
               <div className="mb-3">
                 <label className="form-label">Age</label>
                 <input type="number" className="form-control" name="age" value={formData.age}
@@ -268,14 +272,14 @@ function App() {
                     <BarChart
                       data={featureImportance}
                       layout="vertical"
-                      margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
+                      margin={{ top: 0, right: 10, bottom: 0, left: -30 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis type="number" />
                       <YAxis
                         type="category"
                         dataKey="name"
-                        tick={{ fontSize: 12 }}
+                        tick={{ fontSize: 16 }}
                         width={120}
                       />
                       <Tooltip />
