@@ -268,9 +268,9 @@ function App() {
             </div>
             <div className="feature-imp-container">
               <h6 className="fw-bold text-center mb-3 archivo-black-regular">📈 Feature Importance</h6>
-              <p className="archivo-black-regular">
+              <div className="form-text mb-3 text-center">
                 Feature importance is calculated by analyzing the coefficients of the independent variables. These coefficients are derived by minimizing binary cross-entropy loss using the gradient descent algorithm.
-              </p>
+              </div>
               <div className="feature-chart-responsive">
                 <div className="feature-chart-inner">
                   <ResponsiveContainer width="100%" height="100%">
