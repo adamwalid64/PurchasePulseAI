@@ -89,6 +89,29 @@ html, body, #root {
   min-width: 200px;
 }
 
+.animated-result {
+  animation: bounceFadeIn 0.8s ease;
+  transform-origin: center;
+  font-family: "Archivo Black", sans-serif;
+}
+
+@keyframes bounceFadeIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .recharts-legend-wrapper {
   width: 100% !important;
   left: 0 !important;
