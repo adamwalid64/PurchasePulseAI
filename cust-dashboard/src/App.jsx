@@ -152,6 +152,9 @@ function App() {
           <div className="custom-card shadow-sm p-4 border border-dark h-100">
             <form onSubmit={handleSubmit} className="form-container archivo-black-regular">
               <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Information</h4>
+              <div className="form-text mb-3 text-center">
+                Data should be from one major retailer to ensure accuracy.
+              </div>
               <div className="mb-3">
                 <label className="form-label">Age</label>
                 <input type="number" className="form-control" name="age" value={formData.age}
@@ -183,9 +186,6 @@ function App() {
                 <label className="form-label">Total Number of Discounts Used</label>
                 <input type="number" className="form-control" name="discounts" value={formData.discounts}
                   onChange={handleChange} placeholder="Enter how many discounts used" required />
-              </div>
-              <div className="form-text">
-                Data should be from one major retailer to ensure accuracy.
               </div>
               {
               <button
