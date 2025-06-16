@@ -272,7 +272,12 @@ function App() {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis type="number" />
-                      <YAxis type="category" dataKey="name" />
+                      <YAxis
+                        type="category"
+                        dataKey="name"
+                        tick={{ fontSize: 12 }}
+                        width={120}
+                      />
                       <Tooltip />
                       <Bar dataKey="value" fill="#8884d8" />
                     </BarChart>
