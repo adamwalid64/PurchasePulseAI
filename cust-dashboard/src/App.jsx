@@ -275,7 +275,7 @@ function App() {
                       <YAxis
                         type="category"
                         dataKey="name"
-                        tick={{ fontSize: 12 }}
+                        tick={{ fontSize: 14 }}
                         width={120}
                       />
                       <Tooltip />
