@@ -143,7 +143,7 @@ function App() {
       <div className="header-container text-center mb-3">
         <h1 id="title" className="archivo-black-regular">PurchasePulse</h1>
         <p className="text-muted project-description archivo-black-regular">
-          Provide customer details and unveil the probability of a repeat purchase! Our logistic regression model—boasting 75% accuracy—shines a light on the key factors behind customer retention.
+          Unlock powerful insights with just a few customer details. Our logistic regression model, boasting an impressive 75% accuracy rate, reveals the driving forces behind repeat purchases and uncovers what truly fuels customer loyalty.
         </p>
       </div>
 
