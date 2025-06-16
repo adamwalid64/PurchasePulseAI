@@ -55,7 +55,8 @@ function App() {
     age: '',
     purchases: '',
     loyalty: '',
-    discounts: ''
+    discounts: '',
+    context: ''
   });
 
   const [prediction, setPrediction] = useState(null);
@@ -150,7 +151,21 @@ function App() {
         <div className="col-12 col-md-8 col-lg-6 mb-4">
           <div className="custom-card shadow-sm p-4 border border-dark h-100">
             <form onSubmit={handleSubmit} className="form-container archivo-black-regular">
-              <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Data</h4>
+              <h4 className="fw-bold mb-3 text-center archivo-black-regular">Enter Customer Information</h4>
+              <div className="mb-3">
+                <label className="form-label">Additional Context</label>
+                <textarea
+                  className="form-control"
+                  name="context"
+                  rows="3"
+                  value={formData.context}
+                  onChange={handleChange}
+                  placeholder="Provide any notes (e.g., data from a single major retailer)"
+                />
+                <div className="form-text">
+                  Data should be from one major retailer to ensure accuracy.
+                </div>
+              </div>
               <div className="mb-3">
                 <label className="form-label">Age</label>
                 <input type="number" className="form-control" name="age" value={formData.age}
