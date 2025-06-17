@@ -55,3 +55,10 @@
 
 
 
+## 🚀 Deploying on Vercel
+
+The project now includes serverless functions under the `api/` directory so the
+Flask backend can run on Vercel alongside the React frontend. When Vercel
+builds the app it sets the `VERCEL` environment variable, which the frontend
+uses to call these local API routes instead of the Render instance.
+
