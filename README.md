@@ -54,6 +54,17 @@
 ## 📂 Project Structure
 
 
+```
+PurchasePulseAI/
+├── cust-dashboard/   # React frontend
+│   └── src/
+│       └── App.jsx   # main app component
+├── api/              # Flask serverless API
+│   └── app.py        # prediction endpoints
+└── prediction/       # model and dataset
+    ├── logistic_model.pkl
+    └── dataset1.csv
+```
 
 ## 🚀 Deploying on Vercel
 
