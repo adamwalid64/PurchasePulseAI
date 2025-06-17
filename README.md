@@ -59,19 +59,18 @@ PurchasePulseAI/
 ├── cust-dashboard/   # React frontend
 │   └── src/
 │       └── App.jsx   # main app component
-├── api/              # Flask serverless API
+├── api/              # Flask API
 │   └── app.py        # prediction endpoints
 └── prediction/       # model and dataset
     ├── logistic_model.pkl
     └── dataset1.csv
 ```
 
-## 🚀 Deploying on Vercel
+## 🚀 Deploying
 
-The project now includes serverless functions under the `api/` directory so the
-Flask backend can run on Vercel alongside the React frontend. When Vercel
-builds the app it sets the `VERCEL` environment variable, which the frontend
-uses to call these local API routes instead of the Render instance.
+The React dashboard is deployed on Vercel. The Flask backend runs separately on
+Render at `https://purchasepulseai.onrender.com`, and the frontend sends its API
+requests to that URL.
 
 ## 🧪 Running Tests
 

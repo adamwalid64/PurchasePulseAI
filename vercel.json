@@ -1,17 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "cust-dashboard/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
-    {
-      "src": "api/app.py",
-      "use": "@vercel/python",
-      "config": {
-        "includeFiles": "prediction/**"
-      }
-    }
+    { "src": "cust-dashboard/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "api/app.py" },
     { "src": "/(.*)", "dest": "cust-dashboard/dist/$1" }
   ]
 }
