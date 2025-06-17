@@ -57,8 +57,22 @@
 
 ## 🚀 Deploying on Vercel
 
-The project now includes serverless functions under the `api/` directory so the
+The project includes serverless functions under the `api/` directory so the
 Flask backend can run on Vercel alongside the React frontend. When Vercel
 builds the app it sets the `VERCEL` environment variable, which the frontend
 uses to call these local API routes instead of the Render instance.
+
+Follow these steps to deploy:
+
+1. Create a **New Project** in Vercel and select this repository.
+2. Use the repository root (`/`) as the **Project Root**.
+3. Set the **Build Command** to:
+
+   ```bash
+   npm --prefix cust-dashboard run build
+   ```
+
+4. Set the **Output Directory** to `cust-dashboard/dist`.
+5. Deploy the project. The Python functions inside the `api/` folder are
+   automatically served with Vercel's `@vercel/python` runtime.
 
