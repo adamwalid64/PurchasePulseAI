@@ -72,6 +72,18 @@ The React dashboard is deployed on Vercel. The Flask backend runs separately on
 Render at `https://purchasepulseai.onrender.com`, and the frontend sends its API
 requests to that URL.
 
+To build and publish the frontend you need Node.js installed. From the
+`cust-dashboard` directory install dependencies and run the deploy script:
+
+```bash
+cd cust-dashboard
+npm install
+npm run deploy
+```
+
+This uses `gh-pages` under the hood and pushes the compiled Vite app in the
+`dist` folder to GitHub Pages.
+
 ## 🧪 Running Tests
 
 Install dependencies:
