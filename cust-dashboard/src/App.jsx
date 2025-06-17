@@ -72,6 +72,10 @@ function App() {
   ];
   const [loyaltyError, setLoyaltyError] = useState('');
 
+  const API_BASE = process.env.VERCEL
+    ? '/api/app'
+    : 'https://purchasepulseai.onrender.com';
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -95,7 +99,7 @@ function App() {
     const features = [age, purchases, loyalty, discounts, lp_discounts];
 
     try {
-      const res = await fetch('https://purchasepulseai.onrender.com/predict', {
+      const res = await fetch(`${API_BASE}/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ features })
@@ -111,7 +115,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch('https://purchasepulseai.onrender.com/performance')
+    fetch(`${API_BASE}/performance`)
       .then(res => res.json())
       .then(data => {
         const chartData = [
@@ -126,7 +130,7 @@ function App() {
         console.error('Failed to fetch model performance:', err);
       });
 
-    fetch('https://purchasepulseai.onrender.com/importance')
+    fetch(`${API_BASE}/importance`)
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();

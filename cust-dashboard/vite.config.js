@@ -6,4 +6,8 @@ export default defineConfig({
   // Fallback to the repo subpath for GitHub Pages deployments.
   base: process.env.VERCEL ? '/' : '/PurchasePulseAI/',
   plugins: [react()],
+  define: {
+    'process.env': process.env,
+  },
 });
+
