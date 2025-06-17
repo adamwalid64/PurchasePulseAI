@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "cust-dashboard/package.json", "use": "@vercel/static-build", "config": { "distDir": "cust-dashboard/dist" } },
+    { "src": "cust-dashboard/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
     {
       "src": "api/app.py",
       "use": "@vercel/python",
