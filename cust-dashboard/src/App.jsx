@@ -72,9 +72,7 @@ function App() {
   ];
   const [loyaltyError, setLoyaltyError] = useState('');
 
-  const API_BASE = process.env.VERCEL
-    ? '/api/app'
-    : 'https://purchasepulseai.onrender.com';
+  const API_BASE = 'https://purchasepulseai.onrender.com';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
